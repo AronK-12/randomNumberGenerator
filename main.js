@@ -1,5 +1,3 @@
-const maximumRange = document.getElementById('max__input');
-
 const genButton = document.getElementById('generate__button');
 
 const resultText = document.getElementById('generated__result');
@@ -7,11 +5,13 @@ const resultText = document.getElementById('generated__result');
 genButton.onclick = () => {
   let rand;
 
-  if (maximumRange.value) {
-    rand = Math.floor(Math.random() * maxValue) + 1;
-  } else {
-    rand = 0;
-  }
+  const min = Number(document.getElementById('min__input').value);
+  const max = Number(document.getElementById('max__input').value);
 
-  resultText.innerText = `${rand}`;
+  if (min < max) {
+    rand = Math.floor(Math.random() * (max - min)) + min + 1;
+    resultText.innerText = `${rand}`;
+  } else {
+    resultText.innerText = `Max can't be smaller than min.`;
+  }
 };
