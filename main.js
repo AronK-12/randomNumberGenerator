@@ -8,14 +8,10 @@ genButton.onclick = () => {
   let rand;
 
   if (maximumRange.value) {
-    rand = generateRandomNumber(maximumRange.value);
+    rand = Math.floor(Math.random() * maxValue) + 1;
   } else {
     rand = 0;
   }
 
   resultText.innerText = `${rand}`;
 };
-
-function generateRandomNumber(maxValue) {
-  return Math.floor(Math.random() * maxValue + 1);
-}
